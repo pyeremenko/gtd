@@ -1,3 +1,24 @@
-# GTD for kids
+# README
 
-This is a simple GTD app for kids. Please, don't expect too much from this application because it's just a pet project to help my son with his daily routines. That's why this app may contain a mix of different features which aren't related to GTD.
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
