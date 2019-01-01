@@ -29,7 +29,7 @@ gem 'devise-i18n'
 gem 'jquery-rails'
 gem 'pg'
 gem 'pundit'
-gem 'therubyracer', :platform=>:ruby
+gem 'mini_racer'
 group :development do
   gem 'foreman'
   gem 'rails_layout'
