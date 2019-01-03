@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2019_01_01_091608) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.datetime "cheduled_at"
+    t.string "scheduled_at", limit: 5
     t.index ["user_id"], name: "index_items_sets_on_user_id"
   end
 
