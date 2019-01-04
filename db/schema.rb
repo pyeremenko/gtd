@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_01_091608) do
+ActiveRecord::Schema.define(version: 2019_01_04_032020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.string "icon"
+    t.string "color", limit: 7
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.string "scheduled_at", limit: 5
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
 
   create_table "item_actions", force: :cascade do |t|
     t.string "action"
@@ -33,17 +44,6 @@ ActiveRecord::Schema.define(version: 2019_01_01_091608) do
     t.index ["items_set_id"], name: "index_items_on_items_set_id"
   end
 
-  create_table "items_sets", force: :cascade do |t|
-    t.string "title"
-    t.string "icon"
-    t.string "color", limit: 7
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.string "scheduled_at", limit: 5
-    t.index ["user_id"], name: "index_items_sets_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -54,11 +54,12 @@ ActiveRecord::Schema.define(version: 2019_01_01_091608) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.integer "role"
+    t.string "time_zone"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "events", "users"
   add_foreign_key "item_actions", "items"
-  add_foreign_key "items", "items_sets"
-  add_foreign_key "items_sets", "users"
+  add_foreign_key "items", "events", column: "items_set_id"
 end
