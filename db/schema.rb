@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_05_020440) do
+ActiveRecord::Schema.define(version: 2019_01_06_030204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,12 +27,12 @@ ActiveRecord::Schema.define(version: 2019_01_05_020440) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
-  create_table "item_actions", force: :cascade do |t|
+  create_table "task_actions", force: :cascade do |t|
     t.string "action"
     t.bigint "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_item_actions_on_item_id"
+    t.index ["item_id"], name: "index_task_actions_on_item_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -61,6 +61,6 @@ ActiveRecord::Schema.define(version: 2019_01_05_020440) do
   end
 
   add_foreign_key "events", "users"
-  add_foreign_key "item_actions", "tasks", column: "item_id"
+  add_foreign_key "task_actions", "tasks", column: "item_id"
   add_foreign_key "tasks", "events"
 end
