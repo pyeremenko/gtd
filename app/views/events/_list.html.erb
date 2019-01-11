@@ -1,0 +1,9 @@
+<div class="list-group">
+  <% @events.each do |event| %>
+    <a href="#" class="list-group-item list-group-item-action">
+      <%= tag.i '', class: "fa fa-#{event.icon}", style: "color: #{event.color}" %>
+      <%= event.title %>
+      <span class="float-right"><%= event.scheduled_at %></span>
+    </a>
+  <% end %>
+</div>
